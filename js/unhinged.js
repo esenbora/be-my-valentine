@@ -16,20 +16,15 @@
     const buttonsContainer = document.getElementById('buttonsContainer');
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
-    const weddingOverlay = document.getElementById('weddingOverlay');
+    const celebrationOverlay = document.getElementById('celebrationOverlay');
     const shareBtn = document.getElementById('shareBtn');
-
-    // URL Params for names
-    const urlParams = new URLSearchParams(window.location.search);
-    const partnerName = urlParams.get('to') || 'You';
-    const senderName = urlParams.get('from') || 'Me';
 
     // Meme texts by stage
     const memeTexts = {
         1: ['bro...', 'really?', 'come on...', 'think about it'],
         2: ['PLEASE', 'I\'m begging', 'don\'t do this', 'WHY'],
-        3: ['I\'M LITERALLY CRYING', 'YOU MONSTER', 'MY MOM ALREADY KNOWS', 'THIS IS NOT A GAME'],
-        4: ['FINE', 'I GUESS I\'LL DIE', 'DARKNESS CONSUMES ME', 'EMOTIONAL DAMAGE', 'TASK FAILED SUCCESSFULLY']
+        3: ['I\'M LITERALLY CRYING', 'YOU MONSTER', 'JUST SAY YES', 'THIS IS NOT A GAME'],
+        4: ['FINE', 'I GUESS I\'LL DIE', 'DARKNESS CONSUMES ME', 'EMOTIONAL DAMAGE', 'BE MY VALENTINE ALREADY']
     };
 
     // Emojis to spawn
@@ -38,7 +33,6 @@
     // Initialize
     function init() {
         setupEventListeners();
-        updateNames();
     }
 
     function setupEventListeners() {
@@ -55,23 +49,6 @@
 
         // Share button
         shareBtn.addEventListener('click', handleShare);
-    }
-
-    function updateNames() {
-        document.getElementById('partnerName').textContent = partnerName;
-        document.getElementById('senderName').textContent = senderName;
-        document.getElementById('weddingDate').textContent = new Date().toLocaleDateString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        document.getElementById('weddingId').textContent = generateWeddingId();
-    }
-
-    function generateWeddingId() {
-        const funnyIds = ['00042069', '80085420', '69696969', '13371337', '8675309'];
-        return funnyIds[Math.floor(Math.random() * funnyIds.length)];
     }
 
     // Check cursor proximity to No button
@@ -290,7 +267,7 @@
     // Continuous meme text spam
     function startMemeTextSpam() {
         const interval = setInterval(() => {
-            if (weddingOverlay.classList.contains('hidden')) {
+            if (celebrationOverlay.classList.contains('hidden')) {
                 addMemeText(getMemeText());
             } else {
                 clearInterval(interval);
@@ -301,7 +278,7 @@
     // Continuous emoji spam
     function startEmojiSpam() {
         const interval = setInterval(() => {
-            if (weddingOverlay.classList.contains('hidden')) {
+            if (celebrationOverlay.classList.contains('hidden')) {
                 spawnEmojis(3);
             } else {
                 clearInterval(interval);
@@ -309,7 +286,7 @@
         }, 300);
     }
 
-    // YES clicked - show wedding certificate
+    // YES clicked - show celebration
     function handleYesClick() {
         // Stop all chaos
         body.classList.remove('shake-violent', 'shake-heavy', 'shake-medium', 'shake-light');
@@ -317,16 +294,16 @@
         // Clear chaos container
         chaosContainer.innerHTML = '';
 
-        // Show certificate
-        weddingOverlay.classList.remove('hidden');
+        // Show celebration
+        celebrationOverlay.classList.remove('hidden');
 
-        // Reset body filter for clean certificate view
+        // Reset body filter for clean view
         body.style.filter = 'none';
     }
 
     // Share on X
     function handleShare() {
-        const text = `I tried to say no... I'm married now 💀\n\nWedding ID: #${document.getElementById('weddingId').textContent}`;
+        const text = `I tried to click No on this Valentine's website...\n\nI couldn't 💀`;
         const url = window.location.href;
         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
         window.open(tweetUrl, '_blank');
