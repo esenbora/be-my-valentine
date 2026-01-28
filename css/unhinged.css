@@ -1,0 +1,512 @@
+/* Deep-Fried Valentine CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    filter: saturate(2) contrast(1.3) brightness(1.1);
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💘</text></svg>'), auto;
+}
+
+/* Tiled Hearts Background */
+.tiled-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff1493;
+    /* Inline SVG pixelated heart tile */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect fill='%23ff1493' width='64' height='64'/%3E%3Cg fill='%23ff69b4'%3E%3Crect x='12' y='8' width='8' height='8'/%3E%3Crect x='20' y='8' width='8' height='8'/%3E%3Crect x='36' y='8' width='8' height='8'/%3E%3Crect x='44' y='8' width='8' height='8'/%3E%3Crect x='4' y='16' width='8' height='8'/%3E%3Crect x='12' y='16' width='8' height='8'/%3E%3Crect x='20' y='16' width='8' height='8'/%3E%3Crect x='28' y='16' width='8' height='8'/%3E%3Crect x='36' y='16' width='8' height='8'/%3E%3Crect x='44' y='16' width='8' height='8'/%3E%3Crect x='52' y='16' width='8' height='8'/%3E%3Crect x='4' y='24' width='8' height='8'/%3E%3Crect x='12' y='24' width='8' height='8'/%3E%3Crect x='20' y='24' width='8' height='8'/%3E%3Crect x='28' y='24' width='8' height='8'/%3E%3Crect x='36' y='24' width='8' height='8'/%3E%3Crect x='44' y='24' width='8' height='8'/%3E%3Crect x='52' y='24' width='8' height='8'/%3E%3Crect x='12' y='32' width='8' height='8'/%3E%3Crect x='20' y='32' width='8' height='8'/%3E%3Crect x='28' y='32' width='8' height='8'/%3E%3Crect x='36' y='32' width='8' height='8'/%3E%3Crect x='44' y='32' width='8' height='8'/%3E%3Crect x='20' y='40' width='8' height='8'/%3E%3Crect x='28' y='40' width='8' height='8'/%3E%3Crect x='36' y='40' width='8' height='8'/%3E%3Crect x='28' y='48' width='8' height='8'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 64px 64px;
+    image-rendering: pixelated;
+    z-index: -1;
+}
+
+/* Chaos Container */
+.chaos-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.chaos-container .btn-yes {
+    pointer-events: auto;
+}
+
+/* Main Content */
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Impact Text Styling */
+.question {
+    font-size: clamp(2rem, 8vw, 5rem);
+    color: white;
+    text-shadow:
+        -4px -4px 0 #000,
+        4px -4px 0 #000,
+        -4px 4px 0 #000,
+        4px 4px 0 #000,
+        0 0 20px #ff0000;
+    text-align: center;
+    transform: rotate(-3deg);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    animation: pulse-text 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-text {
+    from { transform: rotate(-3deg) scale(1); }
+    to { transform: rotate(-3deg) scale(1.02); }
+}
+
+/* Buttons Container */
+.buttons-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Button Base */
+.btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+}
+
+/* YES Button */
+.btn-yes {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    padding: 20px 60px;
+    background: linear-gradient(180deg, #00ff00 0%, #00cc00 50%, #009900 100%);
+    color: white;
+    text-shadow:
+        -3px -3px 0 #000,
+        3px -3px 0 #000,
+        -3px 3px 0 #000,
+        3px 3px 0 #000;
+    border: 4px solid #000;
+    border-radius: 10px;
+    animation: yes-pulse 0.3s ease-in-out infinite alternate;
+    box-shadow: 0 8px 0 #006600, 0 12px 20px rgba(0,0,0,0.5);
+}
+
+.btn-yes:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 0 #006600, 0 16px 30px rgba(0,0,0,0.5);
+}
+
+.btn-yes:active {
+    transform: scale(0.95) translateY(4px);
+    box-shadow: 0 4px 0 #006600;
+}
+
+@keyframes yes-pulse {
+    from {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    to {
+        transform: scale(1.05);
+        filter: brightness(1.2);
+    }
+}
+
+/* NO Button */
+.btn-no {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-size: 1rem;
+    padding: 10px 30px;
+    background: #cccccc;
+    color: #333;
+    border: 2px solid #999;
+    border-radius: 5px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.btn-no:hover {
+    background: #aaaaaa;
+}
+
+/* Spawned YES Buttons */
+.spawned-yes {
+    position: fixed;
+    z-index: 15;
+    animation: spawn-in 0.3s ease-out;
+}
+
+@keyframes spawn-in {
+    from {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+}
+
+/* Floating Meme Text */
+.meme-text {
+    position: fixed;
+    font-size: clamp(1rem, 3vw, 2rem);
+    color: white;
+    text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+    pointer-events: none;
+    z-index: 20;
+    animation: float-up 3s ease-out forwards;
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) rotate(20deg);
+    }
+}
+
+/* Floating Emojis */
+.floating-emoji {
+    position: fixed;
+    font-size: 3rem;
+    pointer-events: none;
+    z-index: 25;
+    animation: emoji-float 2s ease-out forwards;
+}
+
+@keyframes emoji-float {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-100px) scale(1.5) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0.5) rotate(360deg);
+    }
+}
+
+/* Screen Shake Animations */
+.shake-light {
+    animation: shake-light 0.3s ease-in-out;
+}
+
+.shake-medium {
+    animation: shake-medium 0.4s ease-in-out;
+}
+
+.shake-heavy {
+    animation: shake-heavy 0.5s ease-in-out;
+}
+
+.shake-violent {
+    animation: shake-violent 0.5s ease-in-out infinite;
+}
+
+@keyframes shake-light {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes shake-medium {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    20% { transform: translateX(-10px) rotate(-1deg); }
+    40% { transform: translateX(10px) rotate(1deg); }
+    60% { transform: translateX(-10px) rotate(-1deg); }
+    80% { transform: translateX(10px) rotate(1deg); }
+}
+
+@keyframes shake-heavy {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-15px, -5px) rotate(-2deg); }
+    20% { transform: translate(15px, 5px) rotate(2deg); }
+    30% { transform: translate(-15px, 5px) rotate(-2deg); }
+    40% { transform: translate(15px, -5px) rotate(2deg); }
+    50% { transform: translate(-15px, -5px) rotate(-2deg); }
+    60% { transform: translate(15px, 5px) rotate(2deg); }
+    70% { transform: translate(-15px, 5px) rotate(-2deg); }
+    80% { transform: translate(15px, -5px) rotate(2deg); }
+    90% { transform: translate(-15px, -5px) rotate(-2deg); }
+}
+
+@keyframes shake-violent {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10% { transform: translate(-20px, -10px) rotate(-5deg); }
+    20% { transform: translate(20px, 10px) rotate(5deg); }
+    30% { transform: translate(-20px, 10px) rotate(-5deg); }
+    40% { transform: translate(20px, -10px) rotate(5deg); }
+    50% { transform: translate(-20px, -10px) rotate(-5deg); }
+    60% { transform: translate(20px, 10px) rotate(5deg); }
+    70% { transform: translate(-20px, 10px) rotate(-5deg); }
+    80% { transform: translate(20px, -10px) rotate(5deg); }
+    90% { transform: translate(-20px, -10px) rotate(-5deg); }
+}
+
+/* Color Invert Effect */
+.inverted {
+    filter: invert(1) saturate(2) contrast(1.3) brightness(1.1);
+}
+
+/* Wedding Certificate Overlay */
+.wedding-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fade-in 0.5s ease;
+}
+
+.wedding-overlay.hidden {
+    display: none;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Wedding Certificate - 16:9 for X screenshots */
+.wedding-certificate {
+    width: min(90vw, 800px);
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe4e4 50%, #ffd4d4 100%);
+    border: 8px solid #ff1493;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow:
+        0 0 0 4px #fff,
+        0 0 0 8px #ff1493,
+        0 20px 60px rgba(0,0,0,0.5);
+    animation: certificate-appear 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.wedding-certificate::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 20, 147, 0.03) 10px,
+        rgba(255, 20, 147, 0.03) 20px
+    );
+    pointer-events: none;
+}
+
+@keyframes certificate-appear {
+    from {
+        transform: scale(0.5) rotate(-10deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.certificate-header {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    color: #ff1493;
+    text-shadow: 2px 2px 0 #ffb6c1;
+    letter-spacing: 3px;
+}
+
+.certificate-subheader {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    color: #666;
+    margin-top: 5px;
+}
+
+.certificate-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.certificate-names {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: #333;
+}
+
+.certificate-names .name {
+    color: #ff1493;
+    text-shadow: 1px 1px 0 #ffb6c1;
+}
+
+.heart-divider {
+    color: #ff0000;
+    margin: 0 15px;
+    animation: heart-beat 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes heart-beat {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+.certificate-date {
+    font-family: 'Georgia', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    color: #666;
+}
+
+.certificate-note {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #ff1493;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 2px dashed #ffb6c1;
+}
+
+.certificate-id {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    color: #999;
+}
+
+.certificate-seal {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ff1493 0%, #ff69b4 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+    color: white;
+    font-weight: bold;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #ff1493;
+}
+
+.btn-share {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    padding: 12px 40px;
+    background: #000;
+    color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-share:hover {
+    background: #333;
+    transform: scale(1.05);
+}
+
+/* Meme Text Styles */
+.meme-text.bro { color: #ff0000; }
+.meme-text.crying { color: #00ffff; }
+.meme-text.please { color: #ffff00; }
+.meme-text.why { color: #ff00ff; }
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .buttons-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btn-yes {
+        padding: 15px 40px;
+    }
+
+    .wedding-certificate {
+        padding: 15px;
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 400px;
+    }
+
+    .certificate-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Shrinking No button states */
+.btn-no.shrink-1 {
+    font-size: 0.9rem;
+    padding: 8px 25px;
+}
+
+.btn-no.shrink-2 {
+    font-size: 0.7rem;
+    padding: 6px 20px;
+}
+
+.btn-no.shrink-3 {
+    font-size: 0.5rem;
+    padding: 4px 15px;
+}
+
+.btn-no.shrink-4 {
+    font-size: 5px !important;
+    padding: 2px 8px !important;
+    opacity: 0.5;
+}

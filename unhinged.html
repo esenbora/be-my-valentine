@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WILL YOU BE MY VALENTINE</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💀</text></svg>">
+
+    <!-- Viral Meta Tags -->
+    <meta property="og:title" content="I tried to say no... I'm married now">
+    <meta property="og:description" content="Try clicking No. I dare you.">
+    <meta property="og:image" content="og-unhinged.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="I tried to say no... I'm married now">
+    <meta name="twitter:description" content="Try clicking No. I dare you.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Impact&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/unhinged.css">
+</head>
+<body>
+    <!-- Tiled Hearts Background -->
+    <div class="tiled-bg"></div>
+
+    <!-- Chaos Container (for spawned elements) -->
+    <div class="chaos-container" id="chaosContainer"></div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <h1 class="question" id="question">WILL YOU BE MY VALENTINE</h1>
+
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="btn btn-yes" id="yesBtn">YES</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+
+        <!-- Meme text spawns here -->
+        <div class="meme-text-container" id="memeTextContainer"></div>
+    </main>
+
+    <!-- Wedding Certificate (hidden) -->
+    <div class="wedding-overlay hidden" id="weddingOverlay">
+        <div class="wedding-certificate" id="weddingCertificate">
+            <div class="certificate-header">CERTIFICATE OF MARRIAGE</div>
+            <div class="certificate-subheader">LEGALLY BINDING (trust me)</div>
+
+            <div class="certificate-body">
+                <div class="certificate-names">
+                    <span class="name" id="partnerName">You</span>
+                    <span class="heart-divider">&</span>
+                    <span class="name" id="senderName">Me</span>
+                </div>
+
+                <div class="certificate-date">
+                    <span id="weddingDate"></span>
+                </div>
+
+                <div class="certificate-note">i already told my mom</div>
+            </div>
+
+            <div class="certificate-footer">
+                <div class="certificate-id">Wedding ID: #<span id="weddingId">00042069</span></div>
+                <div class="certificate-seal">OFFICIAL SEAL</div>
+            </div>
+
+            <button class="btn btn-share" id="shareBtn">Share on X</button>
+        </div>
+    </div>
+
+    <script src="js/unhinged.js"></script>
+</body>
+</html>

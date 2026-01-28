@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Preview - Unhinged Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d0a0a 50%, #1a0505 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Deep-fried noise overlay */
+        .noise {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+        }
+
+        /* Chaotic emoji scatter */
+        .chaos-emoji {
+            position: absolute;
+            font-size: 50px;
+            opacity: 0.6;
+        }
+
+        .main-title {
+            font-family: Impact, sans-serif;
+            font-size: 64px;
+            color: #ff0000;
+            text-shadow:
+                4px 4px 0 #000,
+                -2px -2px 0 #ff6600,
+                0 0 30px #ff0000,
+                0 0 60px #ff0000;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            z-index: 10;
+        }
+
+        .subtitle {
+            font-family: Impact, sans-serif;
+            font-size: 48px;
+            color: #ffff00;
+            text-shadow:
+                3px 3px 0 #000,
+                0 0 20px #ffff00;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .emoji-row {
+            font-size: 100px;
+            margin-bottom: 20px;
+            z-index: 10;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+        }
+
+        .tagline {
+            font-family: Impact, sans-serif;
+            font-size: 36px;
+            color: #00ff00;
+            text-shadow:
+                2px 2px 0 #000,
+                0 0 15px #00ff00;
+            z-index: 10;
+        }
+
+        /* Glowing border effect */
+        .glow-border {
+            position: absolute;
+            inset: 20px;
+            border: 4px solid #ff0000;
+            box-shadow:
+                inset 0 0 30px rgba(255, 0, 0, 0.5),
+                0 0 30px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Multiple YES buttons scattered */
+        .yes-btn {
+            position: absolute;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #ffff00;
+            font-family: Impact, sans-serif;
+            font-size: 24px;
+            padding: 10px 25px;
+            border: 3px solid #ffff00;
+            transform: rotate(var(--rot));
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="noise"></div>
+        <div class="glow-border"></div>
+
+        <!-- Scattered chaos emojis -->
+        <span class="chaos-emoji" style="top: 8%; left: 5%;">💀</span>
+        <span class="chaos-emoji" style="top: 15%; left: 88%;">🔥</span>
+        <span class="chaos-emoji" style="top: 75%; left: 8%;">😈</span>
+        <span class="chaos-emoji" style="top: 82%; left: 85%;">💀</span>
+        <span class="chaos-emoji" style="top: 45%; left: 3%;">🔥</span>
+        <span class="chaos-emoji" style="top: 50%; left: 92%;">😈</span>
+
+        <!-- Scattered YES buttons -->
+        <span class="yes-btn" style="top: 12%; left: 15%; --rot: -15deg;">YES</span>
+        <span class="yes-btn" style="top: 18%; left: 75%; --rot: 10deg;">YES</span>
+        <span class="yes-btn" style="top: 70%; left: 12%; --rot: 8deg;">YES</span>
+        <span class="yes-btn" style="top: 78%; left: 78%; --rot: -12deg;">YES</span>
+
+        <div class="emoji-row">💀😭💀</div>
+        <h1 class="main-title">I tried to say no...</h1>
+        <p class="subtitle">I'm married now</p>
+        <p class="tagline">Try clicking No. I dare you. 😈</p>
+    </div>
+</body>
+</html>
